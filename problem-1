@@ -1,0 +1,29 @@
+# Project Euler Problem 1: Multiples of 3 or 5
+
+# My attempt
+multiples = []
+sum_ = 0
+
+x = 3
+y = 5
+while x < 1000:
+    if x not in multiples: # Common factors between 3 and 5 require checking the multiples of 3 against the multiples list since 5 will increase and encounter the common factors before 3.
+        multiples.append(x)
+    x += 3
+    if y < 1000:
+        multiples.append(y)
+        y += 5
+
+for i in multiples:
+    sum_ += i
+
+print(sum_)
+
+# Attempt after solving and thinking for a more efficient method.
+multiples = set()
+
+for x in range(3,1000):
+    if x % 3 == 0 or x % 5 == 0: # Uses the modulo function to see if there is a remainder - if there is no remainder then it is a factor of 3 / 5.
+        multiples.add(x)
+
+print(sum(multiples))
